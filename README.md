@@ -1,34 +1,34 @@
-The Thinking Spectrum (思维光谱)
-Vision: To build a globally-participatory, dynamically-evolving, and openly-shared human cognitive framework ("The Thinking Spectrum").
-Live Website (v0.1) | 中文版 (Chinese Version) | Read the Monograph Outline
-What is "The Thinking Spectrum"?
-"The Thinking Spectrum" is an open-source knowledge project aiming to map the full range of human thinking models. It first organizes cognition into a 6-dimensional framework, from the "Point" (0D) to "Meta-Cognition" (6D).
-This repository contains:
-An Interactive SPA: A web application (this website) to visually explore the 6 dimensions of thought.
-A Monograph: A collaborative, in-depth book being written by the community, based on the Monograph Outline.
-A Knowledge Base: A growing collection of all relevant thinking models.
-This project is inspired by the metaphor of a dancer on a balance beam, seeking Balance amidst Tension to create Richness.
-How to Contribute
-This is a co-creation project. We need your wisdom. You can contribute in many ways:
-[Nominate a Model]: Submit an Issue to suggest a new thinking model we've missed.
-[Write Content]: Claim a section of the Monograph Outline to write.
-[Improve the Code]: Help make the interactive SPA better.
-[Translate]: Help translate the content into more languages.
-Please read our Contribution Guide (CONTRIBUTING.md) to get started.
-Project Status
-Phase 1: Foundation (Current)
-The initial framework, SPA, and community documents are being established.
-We are now actively seeking the first wave of "Core Maintainers" and "Contributors."
-Contributors ✨
-Thanks goes to these wonderful people (emoji key):
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-This project follows the all-contributors specification. Contributions of any kind welcome!
-License
-This project uses a dual-license model:
-Code (e.g., the HTML/CSS/JS for the SPA) is licensed under the MIT License.
-Content (e.g., the text in the monograph, model definitions) is licensed under the Creative Commons CC BY-SA 4.0 License.
+#The Thinking Spectrum (思维光谱)
+#Vision: To build a globally-participatory, dynamically-evolving, and openly-shared human cognitive framework ("The Thinking Spectrum").
+#Live Website (v0.1) | 中文版 (Chinese Version) | Read the Monograph Outline
+#What is "The Thinking Spectrum"?
+#"The Thinking Spectrum" is an open-source knowledge project aiming to map the full range of human thinking models. It first organizes cognition into a 6-dimensional framework, from the "Point" (0D) to "Meta-Cognition" (6D).
+#This repository contains:
+#An Interactive SPA: A web application (this website) to visually explore the 6 dimensions of thought.
+#A Monograph: A collaborative, in-depth book being written by the community, based on the Monograph Outline.
+#A Knowledge Base: A growing collection of all relevant thinking models.
+#This project is inspired by the metaphor of a dancer on a balance beam, seeking Balance amidst Tension to create Richness.
+#How to Contribute
+#This is a co-creation project. We need your wisdom. You can contribute in many ways:
+#[Nominate a Model]: Submit an Issue to suggest a new thinking model we've missed.
+#[Write Content]: Claim a section of the Monograph Outline to write.
+#[Improve the Code]: Help make the interactive SPA better.
+#[Translate]: Help translate the content into more languages.
+#Please read our Contribution Guide (CONTRIBUTING.md) to get started.
+#Project Status
+#Phase 1: Foundation (Current)
+#The initial framework, SPA, and community documents are being established.
+#We are now actively seeking the first wave of "Core Maintainers" and "Contributors."
+#Contributors ✨
+#Thanks goes to these wonderful people (emoji key):
+#<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+#<!-- prettier-ignore-start -->
+#<!-- ALL-CONTRIBUTORS-LIST:END -->
+#This project follows the all-contributors specification. Contributions of any kind welcome!
+#License
+#This project uses a dual-license model:
+#Code (e.g., the HTML/CSS/JS for the SPA) is licensed under the MIT License.
+#Content (e.g., the text in the monograph, model definitions) is licensed under the Creative Commons CC BY-SA 4.0 License.
 
 思维光谱
 
@@ -90,5 +90,6 @@ Content (e.g., the text in the monograph, model definitions) is licensed under t
 代码（例如，SPA 的 HTML/CSS/JS）采用 MIT 许可证。
 
 内容（例如，专著中的文本、模型定义）采用知识共享署名-相同方式共享 4.0 国际许可协议 (CC BY-SA 4.0)。
+
 
 
