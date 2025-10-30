@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>思维光谱：一份关于认知框架的结构化综述</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .nav-link.active {
+            background-color: #f0fdfa;
+            color: #0f766e;
+            font-weight: 600;
+            border-right: 4px solid #0d9488;
+        }
+        .nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+            border-right: 4px solid transparent;
+        }
+        .nav-link:hover {
+            background-color: #f1f5f9;
+        }
+        .sub-nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+            font-weight: 500;
+            color: #334155;
+            background-color: #f1f5f9;
+        }
+        .sub-nav-link:hover {
+            background-color: #e2e8f0;
+        }
+        .sub-nav-link.active {
+            background-color: #cffafe;
+            color: #0e7490;
+            font-weight: 600;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #f0fdfa;
+            color: #0f766e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin: 0.25rem;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+        .tag:hover {
+            background-color: #ccfbf1;
+        }
+        .content-section h2 {
+            color: #0f766e;
+            border-bottom: 2px solid #99f6e4;
+            padding-bottom: 0.5rem;
+        }
+        .content-section h3 {
+            color: #0e7490;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <!-- Chosen Palette: Calm Neutral with Teal Accent -->
+    <!-- Application Structure Plan: 设计方案：采用侧边栏导航的单页应用（SPA）。侧边栏列出报告的核心维度（引言, 0D-6D, 附录, 述评）作为主导航。点击链接会在主内容区显示对应版块，并隐藏其他版块。选择此（侧边栏+内容面板）结构而非线性滚动，是因为它能将密集的概念内容模块化，允许用户按需、非线性地探索这个复杂的框架，非常适合此类参考资料。'二维'（2D）版块内容最多，因此内部设置了嵌套的子导航，进一步分解内容，提升易用性。 -->
+    <!-- Visualization & Content Choices: 报告为纯概念型，无定量数据。为使用图表，我们从报告的 *结构* 中提取了数据。
+        1.  引言 (Intro): 雷达图 (`dimensionsChart`)。展示0D-6D框架的'抽象层级'与'关联广度'。目标：提供框架的宏观视觉概览。(Chart.js)
+        2.  二维 (2D): 柱状图 (`dualityChart`)。量化了'二维'各子版块中'二元对'的数量。目标：展示'二元'这一核心维度的内容密度。(Chart.js)
+        3.  附录 (Appendix): 甜甜圈图 (`geometryChart`)。展示附录中提及的'几何模型'的分布。目标：视觉化分类附录内容。(Chart.js)
+        4.  文本内容: 通过主导航实现版块折叠。'相关思维'被设计为视觉'标签'（tags），以提升可读性和交互感。 -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        
+        <nav class="w-full md:w-72 bg-white md:border-r border-slate-200 p-4 md:p-6 shrink-0">
+            <h1 class="text-2xl font-bold text-teal-700 mb-6 flex items-center">
+                <span class="text-3xl mr-2">🌌</span>
+                思维光谱
+            </h1>
+            <ul id="main-nav" class="space-y-1">
+                <li><a href="#intro" class="nav-link active">引言：平衡木之舞</a></li>
+                <li><a href="#dim0" class="nav-link">零维：原点与奇点</a></li>
+                <li><a href="#dim1" class="nav-link">一维：点与焦点</a></li>
+                <li><a href="#dim2" class="nav-link">二维：线与二元</a></li>
+                <li><a href="#dim3" class="nav-link">三维：面与结构</a></li>
+                <li><a href="#dim4" class="nav-link">四维：体与全景</a></li>
+                <li><a href="#dim5" class="nav-link">五维：态与演化</a></li>
+                <li><a href="#dim6" class="nav-link">六维：智与超越</a></li>
+                <li><a href="#appendix" class="nav-link">附录：思维的几何模型</a></li>
+                <li><a href="#conclusion" class="nav-link">述评：从光谱到舞蹈</a></li>
+            </ul>
+        </nav>
+
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+            
+            <section id="intro" class="content-section max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">引言：行于平衡木上的舞蹈</h2>
+                <p class="text-lg text-slate-700 mb-4">您所罗列的思维方式，是人类认知工具箱的巡礼。从最简单的二元对立到最复杂的系统涌现，它们共同构成了一个广阔的“思维光谱”。</p>
+                <p class="text-lg text-slate-700 mb-6">如同那位在平衡木上的少女，<strong>真正的智者并非“拥有”某种单一的“正确”思维，而是在这个光谱的“张力”中（如“线性”与“非线性”之间，“局部”与“全局”之间）保持“平衡”，并根据场景“多彩”地切换与“融合”</strong>。</p>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold text-center text-teal-800 mb-4">思维光谱维度概览</h3>
+                    <p class="text-center text-slate-600 mb-4">此图表展示了从零维到六维的框架，从“抽象层级”和“关联广度”两个角度描绘了这个思维模型。</p>
+                    <div class="chart-container">
+                        <canvas id="dimensionsChart"></canvas>
+                    </div>
+                </div>
+                
+                <p class="text-base text-slate-600 mt-6">本综述将遵循“点、线、面、体、态、智”的升维结构，为您解析这个光谱，并指明深入探索的路径。</p>
+            </section>
+
+            <section id="dim0" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">零维：原点与奇点 (The Origin & Singularity)</h2>
+                <p class="text-lg text-slate-700 mb-4">一切思维开始之前，是“空”与“一”的状态。这是思维的归零点，也是一切可能性的起点。</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">核心概念</h3>
+                    <p class="text-lg text-slate-800 font-medium">归零、空性、本源。</p>
+                    
+                    <h3 class="text-xl font-semibold mt-6 mb-3">相关思维</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">零思维与归一思维</span>
+                        <span class="tag">归零思维</span>
+                        <span class="tag">无为思维</span>
+                        <span class="tag">正念思维</span>
+                        <span class="tag">内在思维</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">深度指引</h3>
+                    <p class="text-slate-700">这一维度的训练是“平衡”的基础。当思维陷入混乱（张力过大）时，主动回归“零点”和“当下”，是重新获得平衡的途径。探索“冥想”、“正念”与“道家哲学”将是深入此维度的钥匙。</p>
+                </div>
+            </section>
+
+            <section id="dim1" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">一维：点与焦点 (The Point & Focus)</h2>
+                <p class="text-lg text-slate-700 mb-4">思维从“点”开始。它关乎**深度、专注、边界**与**关键时刻**。</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">核心概念</h3>
+                    <p class="text-lg text-slate-800 font-medium">专注、边界、原子性。</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">相关思维</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">点状思维</span>
+                        <span class="tag">原子思维</span>
+                        <span class="tag">临界思维</span>
+                        <span class="tag">底限思维</span>
+                        <span class="tag">短板思维</span>
+                        <span class="tag">中心思维</span>
+                        <span class="tag">边缘思维</span>
+                        <span class="tag">专注思维</span>
+                        <span class="tag">刻意思维</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">深度指引</h3>
+                    <p class="text-slate-700">“点”是杠杆的支点。`80/20思维` (二八思维) 正是寻找那个关键的“点”。深入探索“第一性原理”（First Principles Thinking）和“关键少数法则”（Vital Few）能极大提升“点”的穿透力。</p>
+                </div>
+            </section>
+
+            <section id="dim2" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">二维：线与二元 (The Line & Duality)</h2>
+                <p class="text-lg text-slate-700 mb-4">这是思维光谱中最“㶷丽”也最具“张力”的区域。世界在“线”的维度上呈现为**方向、流程、对比**与**关系**。这构成了我们决策的坐标轴。</p>
+                
+                <div class="flex flex-wrap gap-2 justify-center mb-6" id="dim2-nav">
+                    <button class="sub-nav-link active" data-target="#dim2-1">2.1 方向与流程</button>
+                    <button class="sub-nav-link" data-target="#dim2-2">2.2 状态与尺度</button>
+                    <button class="sub-nav-link" data-target="#dim2-3">2.3 策略与取舍</button>
+                    <button class="sub-nav-link" data-target="#dim2-4">2.4 视角与立场</button>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 mb-6">
+                    <h3 class="text-xl font-semibold text-center text-teal-800 mb-4">二维（二元对）内容分布</h3>
+                    <p class="text-center text-slate-600 mb-4">此图表量化了“二维”版块中，每个子类别的“二元对”思维模型的数量，展示了此维度的内容密度。</p>
+                    <div class="chart-container">
+                        <canvas id="dualityChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="dim2-content" class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <div id="dim2-1" class="sub-content-section">
+                        <h3 class="text-2xl font-semibold mb-3">2.1 方向与流程</h3>
+                        <div class="space-y-2">
+                            <span class="tag">线性思维与非线性思维</span>
+                            <span class="tag">正向思维与逆向思维</span>
+                            <span class="tag">纵向思维与横向思维</span>
+                            <span class="tag">发散思维与收敛思维</span>
+                            <span class="tag">过程思维与结果思维</span>
+                        </div>
+                    </div>
+                    <div id="dim2-2" class="sub-content-section hidden">
+                        <h3 class="text-2xl font-semibold mb-3">2.2 状态与尺度</h3>
+                        <div class="space-y-2">
+                            <span class="tag">静态思维与动态思维</span>
+                            <span class="tag">宏观思维与微观思维</span>
+                            <span class="tag">局部思维与全局思维</span>
+                            <span class="tag">有限思维与无限思维</span>
+                            <span class="tag">当下思维与未来思维</span>
+                            <span class="tag">抽象思维与具像思维</span>
+                        </div>
+                    </div>
+                    <div id="dim2-3" class="sub-content-section hidden">
+                        <h3 class="text-2xl font-semibold mb-3">2.3 策略与取舍</h3>
+                        <div class="space-y-2">
+                            <span class="tag">加法思维与减法思维</span>
+                            <span class="tag">精益思维与模糊思维</span>
+                            <span class="tag">确定性思维与概率性思维</span>
+                            <span class="tag">完美思维与完成思维</span>
+                            <span class="tag">努力思维与选择思维</span>
+                        </div>
+                    </div>
+                    <div id="dim2-4" class="sub-content-section hidden">
+                        <h3 class="text-2xl font-semibold mb-3">2.4 视角与立场</h3>
+                        <div class="space-y-2">
+                            <span class="tag">内部思维与外部思维</span>
+                            <span class="tag">积极思维与消极思维</span>
+                            <span class="tag">老板思维与员工思维</span>
+                            <span class="tag">男性思维与女性思维</span>
+                            <span class="tag">东方思维与西方思维</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">深度指引</h3>
+                    <p class="text-slate-700">“线”的艺术在于“平衡”。少女在平衡木上，她的身体同时向左和向右倾斜以保持中心。真正的智慧不是“A或B”，而是“在A和B的光谱上找到最佳位置”。`反脆弱思维`（Barbell Strategy）就是一种高级的二元平衡策略。深入阅读“二元对立”（Binary Oppositions）与“辩证法”（Dialectics）。</p>
+                </div>
+            </section>
+
+            <section id="dim3" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">三维：面与结构 (The Surface & Structure)</h2>
+                <p class="text-lg text-slate-700 mb-4">当“线”交织时，便形成了“面”。这是关于**结构、框架、系统**与**网络**的思维。</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">核心概念</h3>
+                    <p class="text-lg text-slate-800 font-medium">关系、框架、系统、网络。</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">相关思维</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">网状思维</span>
+                        <span class="tag">框架思维</span>
+                        <span class="tag">结构思维</span>
+                        <span class="tag">系统综合思维</span>
+                        <span class="tag">逻辑思维</span>
+                        <span class="tag">演绎思维</span>
+                        <span class="tag">归纳思维</span>
+                        <span class="tag">平面思维</span>
+                        <span class="tag">层级思维</span>
+                        <span class="tag">协同思维</span>
+                        <span class="tag">生态思维</span>
+                        <span class="tag">共生思维</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">深度指引</h3>
+                    <p class="text-slate-700">"面"的价值在于“看见全局”。当从“点”和“线”上升到“面”时，你不再是棋子，而是开始成为“棋手”。`模型思维`（Thinking in Models）是这一维度的核心能力。查理·芒格的“多元思维模型”（`多元思维`）是此处的最佳实践指南。</p>
+                </div>
+            </section>
+
+            <section id="dim4" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">四维：体与全景 (The Solid & Panorama)</h2>
+                <p class="text-lg text-slate-700 mb-4">“面”增加了**时间、深度**或**多维视角**，便构成了“体”。这关乎**动态系统、演化**与**全息**。</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">核心概念</h3>
+                    <p class="text-lg text-slate-800 font-medium">动态、立体、演化、全息。</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">相关思维</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">立体思维</span>
+                        <span class="tag">多维思维</span>
+                        <span class="tag">时空思维</span>
+                        <span class="tag">全息思维</span>
+                        <span class="tag">整合思维</span>
+                        <span class="tag">融合思维</span>
+                        <span class="tag">生态思维</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">深度指引</h3>
+                    <p class="text-slate-700">“体”的思维是“活”的思维。它要求我们不仅看到结构，还要看到结构的“生长”与“呼吸”。`量子思维`（Quantum Thinking）是“体”思维的极端形态，它接受“不确定性”、“叠加态”（多种可能共存）和“观察者效应”。</p>
+                </div>
+            </section>
+
+            <section id="dim5" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">五维：态与演化 (The Flux & Evolution)</h2>
+                <p class="text-lg text-slate-700 mb-4">如果“体”是空间概念，那么“态”就是纯粹的**时间、变化**与**动力学**。这是关于“成为”（Becoming）而非“是”（Being）的思维。</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">核心概念</h3>
+                    <p class="text-lg text-slate-800 font-medium">变化、流动、趋势、动力机制。</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">相关思维</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">迭代思维</span>
+                        <span class="tag">复利思维</span>
+                        <span class="tag">杠杆思维</span>
+                        <span class="tag">演化思维</span>
+                        <span class="tag">进化思维</span>
+                        <span class="tag">周期思维</span>
+                        <span class="tag">循环思维</span>
+                        <span class="tag">动态思维</span>
+                        <span class="tag">变化思维</span>
+                        <span class="tag">生长思维</span>
+                        <span class="tag">更新思维</span>
+                        <span class="tag">重生思维</span>
+                        <span class="tag">概率性思维</span>
+                        <span class="tag">风险思维</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">深度指引</h3>
+                    <p class="text-slate-700">这是“无限游戏”（`无限思维`）的领域。掌握了“态”，就掌握了趋势。`贝叶斯定理`（Bayesian Thinking）是“态”思维的数学表达——即信念（认知）随新信息（时间）而动态更新。</p>
+                </div>
+            </section>
+
+            <section id="dim6" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">六维：智与超越 (The Meta & Transcendence)</h2>
+                <p class="text-lg text-slate-700 mb-4">这是光谱的最高层：**对思维本身的思维（Thinking about Thinking）**。这是“少女”在舞蹈时，同时“觉察”到自己正在舞蹈。</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">核心概念</h3>
+                    <p class="text-lg text-slate-800 font-medium">觉知、反思、超越、认知。</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">相关思维</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">元思维</span>
+                        <span class="tag">认知思维</span>
+                        <span class="tag">批判性思维</span>
+                        <span class="tag">证伪思维</span>
+                        <span class="tag">5Why深度思维</span>
+                        <span class="tag">觉察思维</span>
+                        <span class="tag">觉醒思维</span>
+                        <span class="tag">修行思维</span>
+                        <span class="tag">AI思维</span>
+                        <span class="tag">碳基思维与硅基思维</span>
+                        <span class="tag">多元思维</span>
+                        <span class="tag">统一思维</span>
+                        <span class="tag">自由思维</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">深度指引</h3>
+                    <p class="text-slate-700">这是从“工具使用者”到“工具创造者”的飞跃。`元认知`（Metacognition）是所有学习能力的“杠杆”。深入了解“认知科学”和“意识哲学”是通往此维度的路径。</p>
+                </div>
+            </section>
+            
+            <section id="appendix" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">附录：思维的几何模型</h2>
+                <p class="text-lg text-slate-700 mb-4">您清单中的一些词汇，是上述维度中用于“结构化”（三维）的特定工具：</p>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 mb-6">
+                    <h3 class="text-xl font-semibold text-center text-teal-800 mb-4">几何模型分布</h3>
+                    <p class="text-center text-slate-600 mb-4">此图表展示了报告附录中提及的各类“几何”思维模型的数量分布。</p>
+                    <div class="chart-container">
+                        <canvas id="geometryChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>`可能三角思维` / `不可能三角`：<strong>（三维）</strong> 典型的“面”状取舍模型（如“质量-成本-速度”）。</li>
+                        <li>`象限思维` / `矩阵思维`：<strong>（三维）</strong> 两个“线”状二元轴（二维）交叉构成的“面”状分析工具（如“重要-紧急”四象限）。</li>
+                        <li>`五角思维` / `五边思维`：<strong>（三维/四维）</strong> 多边形结构，用于评估“体”的多个关键侧面（如“五力模型”）。</li>
+                        <li>`六色思维` / `六边思维`：<strong>（四维）</strong> 代表“体”的多个视角，强调“多维”检视（如“六顶思考帽”）。</li>
+                        <li>`七巧板思维`：<strong>（三维）</strong> 基础元素（点/线）组合成复杂结构（面/体）的`模组思维`。</li>
+                        <li>`八面思维` / `光谱思维`：<strong>（四维）</strong> 强调“全景”和“立体”，看到问题的各个方面。</li>
+                        <li>`九九归一思维` / `十全圆满思维`：<strong>（零维/六维）</strong> 哲学层面的“归一”和“完备”追求，是“元思维”的目标。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="conclusion" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">综合述评：从“光谱”到“舞蹈”</h2>
+                <p class="text-lg text-slate-700 mb-4">您提供的这份清单，本身就是一幅壮丽的思维光谱。</p>
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <h3 class="text-2xl font-semibold mb-3">1. 关于“张力” (Tension)</h3>
+                        <p class="text-slate-700">绝大多数思维（尤其是“二维”）都是成对出现的（`正/反`、`宏/微`、`左/右`）。这种“张力”不是为了分出高下，而是为了<strong>界定“决策空间”</strong>。平衡木的存在，正是因为两侧都有拉力。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <h3 class="text-2xl font-semibold mb-3">2. 关于“平衡” (Balance)</h3>
+                        <p class="text-slate-700">平衡不是静止不动，而是<strong>动态调整</strong>。它不是`均衡思维`，而是`动态思维`+`平衡思维`的结合。真正的平衡，是`元思维`（六维）在觉察到当前场景后，从光谱中调用最“适配”（`适配化思维`）的思维工具。</p>
+                        <p class="text-slate-700 mt-2 bg-slate-100 p-3 rounded-md">例如：在创业初期（点），使用`原子思维`+`精益思维`；在平台期（面），切换到`系统思维`+`生态思维`；在转型期（态），启用`归零思维`+`演化思维`。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <h3 class="text-2xl font-semibold mb-3">3. 关于“丰彩” (Richness)</h3>
+                        <p class="text-slate-700">丰彩来自<strong>“融合”</strong>与<strong>“升维”</strong>。</p>
+                        <ul class="list-disc list-inside text-slate-700 mt-2 space-y-1">
+                            <li>当`迭代思维`（态）结合`精益思维`（线），就诞生了“敏捷开发”。</li>
+                            <li>当`系统思维`（面）结合`演化思维`（态），就诞生了“复杂科学”。</li>
+                            <li>当`AI思维`（智）结合`网状思维`（面），就诞生了“大语言模型”。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-3 text-teal-800">您的深度阅读指引</h3>
+                    <p class="text-lg text-slate-700 mb-4">这份综述本身就是一份“深度阅读地图”。您的下一步，不是记住所有名词，而是实践“升维”：</p>
+                    <ol class="list-decimal list-inside space-y-3 text-slate-700">
+                        <li class="bg-white p-4 rounded-lg border border-slate-200"><strong>觉察（六维）：</strong> 开始刻意观察自己此刻正处于哪个“维度”？是`点`还是`线`？</li>
+                        <li class="bg-white p-4 rounded-lg border border-slate-200"><strong>拓展（二维）：</strong> 当你使用`正向思维`时，强迫自己切换到`逆向思维`，感受“张力”。</li>
+                        <li class="bg-white p-4 rounded-lg border border-slate-200"><strong>建模（三维）：</strong> 尝试用`框架思维`（如“四象限”）来分析你遇到的问题。</li>
+                        <li class="bg-white p-4 rounded-lg border border-slate-200"><strong>升维（四/五维）：</strong> 问自己：这个“框架”在“时间”（`动态思维`）上会如何“演化”？</li>
+                    </ol>
+                    <p class="text-lg text-slate-700 mt-6 font-medium text-center">最终，您将成为那位“少女”，在这道思维的光谱上，从容不迫，舞出属于您自己的、集张力、平衡与丰彩于一身的智慧之舞。</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const chartColors = {
+                teal: 'rgba(13, 148, 136, 0.6)',
+                tealBorder: 'rgba(13, 148, 136, 1)',
+                sky: 'rgba(14, 165, 233, 0.6)',
+                skyBorder: 'rgba(14, 165, 233, 1)',
+                text: '#334155',
+                grid: '#e2e8f0'
+            };
+
+            const defaultChartOptions = {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: chartColors.text
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#ffffff',
+                        titleColor: '#0f766e',
+                        bodyColor: chartColors.text,
+                        borderColor: chartColors.grid,
+                        borderWidth: 1
+                    }
+                }
+            };
+
+            try {
+                const dimCtx = document.getElementById('dimensionsChart').getContext('2d');
+                new Chart(dimCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['零维(原点)', '一维(焦点)', '二维(二元)', '三维(结构)', '四维(全景)', '五维(演化)', '六维(超越)'],
+                        datasets: [
+                            {
+                                label: '抽象层级',
+                                data: [1, 2, 3, 4, 5, 6, 7],
+                                backgroundColor: chartColors.teal,
+                                borderColor: chartColors.tealBorder,
+                                borderWidth: 2,
+                                pointBackgroundColor: chartColors.tealBorder,
+                                pointRadius: 4
+                            },
+                            {
+                                label: '关联广度',
+                                data: [1, 2, 5, 4, 6, 6, 7],
+                                backgroundColor: chartColors.sky,
+                                borderColor: chartColors.skyBorder,
+                                borderWidth: 2,
+                                pointBackgroundColor: chartColors.skyBorder,
+                                pointRadius: 4
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        scales: {
+                            r: {
+                                angleLines: { color: chartColors.grid },
+                                grid: { color: chartColors.grid },
+                                pointLabels: { color: chartColors.text, font: { size: 13 } },
+                                ticks: {
+                                    color: chartColors.text,
+                                    backdropColor: 'transparent',
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Error creating dimensionsChart:', e);
+            }
+
+            try {
+                const dualityCtx = document.getElementById('dualityChart').getContext('2d');
+                new Chart(dualityCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2.1 方向与流程', '2.2 状态与尺度', '2.3 策略与取舍', '2.4 视角与立场'],
+                        datasets: [{
+                            label: '二元思维对数量',
+                            data: [5, 6, 5, 5],
+                            backgroundColor: [
+                                'rgba(107, 114, 128, 0.6)',
+                                'rgba(59, 130, 246, 0.6)',
+                                'rgba(234, 179, 8, 0.6)',
+                                'rgba(239, 68, 68, 0.6)',
+                            ],
+                            borderColor: [
+                                'rgba(107, 114, 128, 1)',
+                                'rgba(59, 130, 246, 1)',
+                                'rgba(234, 179, 8, 1)',
+                                'rgba(239, 68, 68, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        plugins: {
+                            ...defaultChartOptions.plugins,
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: chartColors.grid },
+                                ticks: { color: chartColors.text, stepSize: 1 }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: chartColors.text }
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Error creating dualityChart:', e);
+            }
+
+            try {
+                const geometryCtx = document.getElementById('geometryChart').getContext('2d');
+                new Chart(geometryCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['三角(3)', '四边(4)', '五边(5)', '六边(6)', '七巧(7)', '八面(8)', '九/十(9+)'],
+                        datasets: [{
+                            label: '模型数量',
+                            data: [1, 1, 1, 1, 1, 1, 2],
+                            backgroundColor: [
+                                'rgba(253, 186, 116, 0.7)',
+                                'rgba(134, 239, 172, 0.7)',
+                                'rgba(147, 197, 253, 0.7)',
+                                'rgba(196, 181, 253, 0.7)',
+                                'rgba(253, 224, 71, 0.7)',
+                                'rgba(240, 171, 252, 0.7)',
+                                'rgba(110, 231, 183, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(251, 146, 60, 1)',
+                                'rgba(74, 222, 128, 1)',
+                                'rgba(96, 165, 250, 1)',
+                                'rgba(167, 139, 250, 1)',
+                                'rgba(234, 179, 8, 1)',
+                                'rgba(232, 121, 249, 1)',
+                                'rgba(52, 211, 153, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        plugins: {
+                            ...defaultChartOptions.plugins,
+                            legend: {
+                                ...defaultChartOptions.plugins.legend,
+                                position: 'right',
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Error creating geometryChart:', e);
+            }
+            
+            const mainNav = document.getElementById('main-nav');
+            const navLinks = mainNav.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            mainNav.addEventListener('click', (e) => {
+                const link = e.target.closest('.nav-link');
+                if (!link) return;
+                
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                
+                contentSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                link.classList.add('active');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+                }
+            });
+
+            const dim2Nav = document.getElementById('dim2-nav');
+            const dim2SubLinks = dim2Nav.querySelectorAll('.sub-nav-link');
+            const dim2SubSections = document.querySelectorAll('.sub-content-section');
+
+            dim2Nav.addEventListener('click', (e) => {
+                const link = e.target.closest('.sub-nav-link');
+                if (!link) return;
+
+                const targetId = link.dataset.target.substring(1);
+
+                dim2SubLinks.forEach(subLink => {
+                    subLink.classList.remove('active');
+                });
+                dim2SubSections.forEach(subSection => {
+                    subSection.classList.add('hidden');
+                });
+
+                link.classList.add('active');
+                const targetSubSection = document.getElementById(targetId);
+                if (targetSubSection) {
+                    targetSubSection.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
