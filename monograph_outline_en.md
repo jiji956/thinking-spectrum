@@ -1,5 +1,5 @@
 Monograph Outline: The Thinking Spectrum: A Cognitive Framework from Awareness to Transcendence
-https://docs.google.com/document/d/1F6sMr3SK2WNiaC1HbOrfxGsogDBFy7wKfUxyRcLGNnQ/edit?usp=sharing
+
 
 
 Preface: The Dance on the Balance Beam
@@ -127,3 +127,4 @@ Appendix B: Index of Core Thinking Models
 (Classification and brief explanation of all models from the source report)
 Bibliography
 Acknowledgments
+
