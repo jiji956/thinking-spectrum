@@ -1,7 +1,7 @@
 
 
 专著大纲：《思维光谱：从觉察到超越的认知框架》
-https://docs.google.com/document/d/1jxsBYV4bSq_Y4rcC7D5YFolpxUnBSuWXflbNBvYMcXI/edit?usp=sharing
+
 
 
 序言：行于平衡木上的舞蹈
@@ -129,3 +129,4 @@ A.4 拓朴与图谱：超越几何的连接
 （源报告中所有思维模型的分类与简释）
 参考文献
 致谢
+
