@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Thinking Spectrum: A Structured Review of Cognitive Frameworks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .nav-link.active {
+            background-color: #f0fdfa;
+            color: #0f766e;
+            font-weight: 600;
+            border-right: 4px solid #0d9488;
+        }
+        .nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+            border-right: 4px solid transparent;
+        }
+        .nav-link:hover {
+            background-color: #f1f5f9;
+        }
+        .sub-nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+            font-weight: 500;
+            color: #334155;
+            background-color: #f1f5f9;
+        }
+        .sub-nav-link:hover {
+            background-color: #e2e8f0;
+        }
+        .sub-nav-link.active {
+            background-color: #cffafe;
+            color: #0e7490;
+            font-weight: 600;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #f0fdfa;
+            color: #0f766e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin: 0.25rem;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+        .tag:hover {
+            background-color: #ccfbf1;
+        }
+        .content-section h2 {
+            color: #0f766e;
+            border-bottom: 2px solid #99f6e4;
+            padding-bottom: 0.5rem;
+        }
+        .content-section h3 {
+            color: #0e7490;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <!-- Chosen Palette: Calm Neutral with Teal Accent -->
+    <!-- Application Structure Plan: Design Plan: A Single Page Application (SPA) with sidebar navigation. The sidebar lists the report's core dimensions (Intro, 0D-6D, Appendix, Review) as main navigation. Clicking a link displays the corresponding section in the main content area and hides others. This (sidebar + content panel) structure was chosen over linear scrolling because it modularizes the dense conceptual content, allowing users non-linear, on-demand exploration of this complex framework, ideal for such a reference. The '2D' section, being the most content-heavy, has nested sub-navigation for enhanced usability. -->
+    <!-- Visualization & Content Choices: The report is purely conceptual with no quantitative data. To use charts, data was extracted from the report's *structure*.
+        1.  Intro: Radar chart (`dimensionsChart`). Displays the 'Abstraction Level' & 'Relational Breadth' of the 0D-6D framework. Goal: Provide a macro visual overview of the framework. (Chart.js)
+        2.  2D: Bar chart (`dualityChart`). Quantifies the number of 'duality pairs' in each '2D' subsection. Goal: Show the content density of this core dimension. (Chart.js)
+        3.  Appendix: Doughnut chart (`geometryChart`). Shows the distribution of 'geometric models' mentioned. Goal: Visually categorize appendix content. (Chart.js)
+        4.  Text Content: Section folding via main nav. 'Related Mindsets' are styled as visual 'tags' for readability and interaction. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        
+        <nav class="w-full md:w-72 bg-white md:border-r border-slate-200 p-4 md:p-6 shrink-0">
+            <h1 class="text-2xl font-bold text-teal-700 mb-6 flex items-center">
+                <span class="text-3xl mr-2">🌌</span>
+                Thinking Spectrum
+            </h1>
+            <ul id="main-nav" class="space-y-1">
+                <li><a href="#intro" class="nav-link active">Introduction: The Balance Beam Dance</a></li>
+                <li><a href="#dim0" class="nav-link">0D: Origin & Singularity</a></li>
+                <li><a href="#dim1" class="nav-link">1D: Point & Focus</a></li>
+                <li><a href="#dim2" class="nav-link">2D: Line & Duality</a></li>
+                <li><a href="#dim3" class="nav-link">3D: Surface & Structure</a></li>
+                <li><a href="#dim4" class="nav-link">4D: Solid & Panorama</a></li>
+                <li><a href="#dim5" class="nav-link">5D: Flux & Evolution</a></li>
+                <li><a href="#dim6" class="nav-link">6D: Meta & Transcendence</a></li>
+                <li><a href="#appendix" class="nav-link">Appendix: Geometric Models</a></li>
+                <li><a href="#conclusion" class="nav-link">Review: From Spectrum to Dance</a></li>
+            </ul>
+        </nav>
+
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+            
+            <section id="intro" class="content-section max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">Introduction: The Balance Beam Dance</h2>
+                <p class="text-lg text-slate-700 mb-4">The mindsets you've listed are a tour of the human cognitive toolkit. From the simplest dualities to the most complex systemic emergences, they form a vast "Thinking Spectrum".</p>
+                <p class="text-lg text-slate-700 mb-6">Like the dancer on the balance beam, <strong>a true sage doesn't "possess" a single "correct" way of thinking, but maintains "balance" within the "tension" of this spectrum (e.g., between "linear" and "non-linear," "local" and "global") and "colorfully" switches and "integrates" them based on the scenario</strong>.</p>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold text-center text-teal-800 mb-4">Thinking Spectrum Dimension Overview</h3>
+                    <p class="text-center text-slate-600 mb-4">This chart illustrates the framework from 0D to 6D, depicting this cognitive model from the perspectives of 'Abstraction Level' and 'Relational Breadth'.</p>
+                    <div class="chart-container">
+                        <canvas id="dimensionsChart"></canvas>
+                    </div>
+                </div>
+                
+                <p class="text-base text-slate-600 mt-6">This review will follow a "Point, Line, Surface, Solid, Flux, Meta" ascending structure to analyze this spectrum and guide deeper exploration.</p>
+            </section>
+
+            <section id="dim0" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">0D: Origin & Singularity</h2>
+                <p class="text-lg text-slate-700 mb-4">Before all thought, there is the state of "emptiness" and "one". This is the zero point of thinking, and the starting point of all possibilities.</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">Core Concepts</h3>
+                    <p class="text-lg text-slate-800 font-medium">Zeroing, Emptiness, Origin.</p>
+                    
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Related Mindsets</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Zero & Unity Thinking</span>
+                        <span class="tag">Zeroing Thinking</span>
+                        <span class="tag">Wu Wei (Non-action) Thinking</span>
+                        <span class="tag">Mindfulness Thinking</span>
+                        <span class="tag">Internal Thinking</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Deeper Guidance</h3>
+                    <p class="text-slate-700">Training in this dimension is the foundation of "balance." When thought becomes chaotic (too much tension), actively returning to "zero" and "the present" is the way to regain equilibrium. Exploring "meditation," "mindfulness," and "Taoist philosophy" is the key to this dimension.</p>
+                </div>
+            </section>
+
+            <section id="dim1" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">1D: Point & Focus</h2>
+                <p class="text-lg text-slate-700 mb-4">Thought begins at the "point." It's about <strong>depth, focus, boundaries,</strong> and <strong>critical moments</strong>.</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">Core Concepts</h3>
+                    <p class="text-lg text-slate-800 font-medium">Focus, Boundary, Atomicity.</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Related Mindsets</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Point Thinking</span>
+                        <span class="tag">Atomic Thinking</span>
+                        <span class="tag">Critical Point Thinking</span>
+                        <span class="tag">Bottom-line Thinking</span>
+                        <span class="tag">Weak-link Thinking</span>
+                        <span class="tag">Central Thinking</span>
+                        <span class="tag">Marginal Thinking</span>
+                        <span class="tag">Focus Thinking</span>
+                        <span class="tag">Deliberate Practice Thinking</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Deeper Guidance</h3>
+                    <p class="text-slate-700">The "point" is the fulcrum of the lever. `80/20 Thinking` is precisely about finding that critical "point." Deeply exploring "First Principles Thinking" and the "Vital Few Rule" can greatly enhance the penetrating power of the "point."</p>
+                </div>
+            </section>
+
+            <section id="dim2" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">2D: Line & Duality</h2>
+                <p class="text-lg text-slate-700 mb-4">This is the most "brilliant" and "tense" area of the thinking spectrum. The world at the "line" dimension presents as <strong>direction, process, contrast,</strong> and <strong>relationship</strong>. These form the axes of our decisions.</p>
+                
+                <div class="flex flex-wrap gap-2 justify-center mb-6" id="dim2-nav">
+                    <button class="sub-nav-link active" data-target="#dim2-1">2.1 Direction & Process</button>
+                    <button class="sub-nav-link" data-target="#dim2-2">2.2 State & Scale</button>
+                    <button class="sub-nav-link" data-target="#dim2-3">2.3 Strategy & Trade-offs</button>
+                    <button class="sub-nav-link" data-target="#dim2-4">2.4 Perspective & Stance</button>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 mb-6">
+                    <h3 class="text-xl font-semibold text-center text-teal-800 mb-4">2D (Duality Pairs) Content Distribution</h3>
+                    <p class="text-center text-slate-600 mb-4">This chart quantifies the number of "duality pair" thinking models in each sub-category of the "2D" section, showing the content density of this dimension.</p>
+                    <div class="chart-container">
+                        <canvas id="dualityChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="dim2-content" class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <div id="dim2-1" class="sub-content-section">
+                        <h3 class="text-2xl font-semibold mb-3">2.1 Direction & Process</h3>
+                        <div class="space-y-2">
+                            <span class="tag">Linear vs. Non-linear Thinking</span>
+                            <span class="tag">Forward vs. Reverse Thinking</span>
+                            <span class="tag">Vertical vs. Lateral Thinking</span>
+                            <span class="tag">Divergent vs. Convergent Thinking</span>
+                            <span class="tag">Process vs. Result Thinking</span>
+                        </div>
+                    </div>
+                    <div id="dim2-2" class="sub-content-section hidden">
+                        <h3 class="text-2xl font-semibold mb-3">2.2 State & Scale</h3>
+                        <div class="space-y-2">
+                            <span class="tag">Static vs. Dynamic Thinking</span>
+                            <span class="tag">Macro vs. Micro Thinking</span>
+                            <span class="tag">Local vs. Global Thinking</span>
+                            <span class="tag">Finite vs. Infinite Thinking</span>
+                            <span class="tag">Present vs. Future Thinking</span>
+                            <span class="tag">Abstract vs. Concrete Thinking</span>
+                        </div>
+                    </div>
+                    <div id="dim2-3" class="sub-content-section hidden">
+                        <h3 class="text-2xl font-semibold mb-3">2.3 Strategy & Trade-offs</h3>
+                        <div class="space-y-2">
+                            <span class="tag">Additive vs. Subtractive Thinking</span>
+                            <span class="tag">Lean vs. Fuzzy Thinking</span>
+                            <span class="tag">Deterministic vs. Probabilistic Thinking</span>
+                            <span class="tag">Perfect vs. Complete Thinking</span>
+                            <span class="tag">Effort vs. Choice Thinking</span>
+                        </div>
+                    </div>
+                    <div id="dim2-4" class="sub-content-section hidden">
+                        <h3 class="text-2xl font-semibold mb-3">2.4 Perspective & Stance</h3>
+                        <div class="space-y-2">
+                            <span class="tag">Internal vs. External Thinking</span>
+                            <span class="tag">Positive vs. Negative Thinking</span>
+                            <span class="tag">Owner vs. Employee Thinking</span>
+                            <span class="tag">Masculine vs. Feminine Thinking</span>
+                            <span class="tag">Eastern vs. Western Thinking</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Deeper Guidance</h3>
+                    <p class="text-slate-700">The art of the "line" is "balance." The dancer on the beam leans left and right simultaneously to stay centered. True wisdom isn't "A or B," but "finding the optimal position on the spectrum between A and B." The `Barbell Strategy` (`Antifragile Thinking`) is an advanced binary balancing strategy. Read more on "Binary Oppositions" and "Dialectics."</p>
+                </div>
+            </section>
+
+            <section id="dim3" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">3D: Surface & Structure</h2>
+                <p class="text-lg text-slate-700 mb-4">When "lines" intersect, they form a "surface." This is about <strong>structure, frameworks, systems,</strong> and <strong>networks</strong>.</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">Core Concepts</h3>
+                    <p class="text-lg text-slate-800 font-medium">Relation, Framework, System, Network.</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Related Mindsets</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Network Thinking</span>
+                        <span class="tag">Framework Thinking</span>
+                        <span class="tag">Structural Thinking</span>
+                        <span class="tag">Systems Synthesis Thinking</span>
+                        <span class="tag">Logical Thinking</span>
+                        <span class="tag">Deductive Thinking</span>
+                        <span class="tag">Inductive Thinking</span>
+                        <span class="tag">Planar Thinking</span>
+                        <span class="tag">Hierarchical Thinking</span>
+                        <span class="tag">Synergistic Thinking</span>
+                        <span class="tag">Ecological Thinking</span>
+                        <span class="tag">Symbiotic Thinking</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Deeper Guidance</h3>
+                    <p class="text-slate-700">The value of the "surface" is "seeing the whole picture." When you ascend from "point" and "line" to "surface," you are no longer a piece on the board; you start becoming the "player." "Thinking in Models" is the core capability of this dimension. Charlie Munger's "Multiple Mental Models" (`Pluralistic Thinking`) is the best practice guide here.</p>
+                </div>
+            </section>
+
+            <section id="dim4" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">4D: Solid & Panorama</h2>
+                <p class="text-lg text-slate-700 mb-4">A "surface" plus <strong>time, depth,</strong> or <strong>multiple perspectives</strong> forms a "solid." This concerns <strong>dynamic systems, evolution,</strong> and <strong>holography</strong>.</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">Core Concepts</h3>
+                    <p class="text-lg text-slate-800 font-medium">Dynamic, 3D, Evolution, Holographic.</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Related Mindsets</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">3D/Solid Thinking</span>
+                        <span class="tag">Multi-dimensional Thinking</span>
+                        <span class="tag">Spacetime Thinking</span>
+                        <span class="tag">Holographic Thinking</span>
+                        <span class="tag">Integrative Thinking</span>
+                        <span class="tag">Fusion Thinking</span>
+                        <span class="tag">Ecological Thinking</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Deeper Guidance</h3>
+                    <p class="text-slate-700">Thinking in "solids" is a "living" way of thinking. It requires us to see not just the structure, but its "growth" and "breath." `Quantum Thinking` is the extreme form of "solid" thinking, accepting "uncertainty," "superposition" (multiple possibilities coexisting), and the "observer effect."</p>
+                </div>
+            </section>
+
+            <section id="dim5" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">5D: Flux & Evolution</h2>
+                <p class="text-lg text-slate-700 mb-4">If "solid" is a spatial concept, then "flux" is purely <strong>time, change,</strong> and <strong>dynamics</strong>. This is about "Becoming" rather than "Being."</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">Core Concepts</h3>
+                    <p class="text-lg text-slate-800 font-medium">Change, Flow, Trend, Dynamics.</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Related Mindsets</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Iterative Thinking</span>
+                        <span class="tag">Compound Interest Thinking</span>
+                        <span class="tag">Leverage Thinking</span>
+                        <span class="tag">Evolutionary Thinking</span>
+                        <span class="tag">Cyclical Thinking</span>
+                        <span class="tag">Recurring Thinking</span>
+                        <span class="tag">Dynamic Thinking</span>
+                        <span class="tag">Change Thinking</span>
+                        <span class="tag">Growth Thinking</span>
+                        <span class="tag">Renewal Thinking</span>
+                        <span class="tag">Rebirth Thinking</span>
+                        <span class="tag">Probabilistic Thinking</span>
+                        <span class="tag">Risk Thinking</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Deeper Guidance</h3>
+                    <p class="text-slate-700">This is the realm of the "Infinite Game" (`Infinite Thinking`). Mastering "flux" means mastering trends. `Bayesian Thinking` is the mathematical expression of "flux" thinking—beliefs (cognition) dynamically update with new information (time).</p>
+                </div>
+            </section>
+
+            <section id="dim6" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">6D: Meta & Transcendence</h2>
+                <p class="text-lg text-slate-700 mb-4">This is the highest level of the spectrum: <strong>Thinking about Thinking</strong>. This is the "dancer" being "aware" of her own dancing, while dancing.</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-semibold mb-3">Core Concepts</h3>
+                    <p class="text-lg text-slate-800 font-medium">Awareness, Reflection, Transcendence, Cognition.</p>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Related Mindsets</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Meta-thinking</span>
+                        <span class="tag">Cognitive Thinking</span>
+                        <span class="tag">Critical Thinking</span>
+                        <span class="tag">Falsification Thinking</span>
+                        <span class="tag">5Why Deep Thinking</span>
+                        <span class="tag">Awareness Thinking</span>
+                        <span class="tag">Awakening Thinking</span>
+                        <span class="tag">Cultivation Thinking</span>
+                        <span class="tag">AI Thinking</span>
+                        <span class="tag">Carbon vs. Silicon Thinking</span>
+                        <span class="tag">Pluralistic Thinking</span>
+                        <span class="tag">Unified Thinking</span>
+                        <span class="tag">Free Thinking</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-6 mb-3">Deeper Guidance</h3>
+                    <p class="text-slate-700">This is the leap from "tool user" to "tool creator." `Metacognition` is the "lever" for all learning abilities. A deep dive into "Cognitive Science" and "Philosophy of Mind" is the path to this dimension.</p>
+                </div>
+            </section>
+            
+            <section id="appendix" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">Appendix: Geometric Models of Thought</h2>
+                <p class="text-lg text-slate-700 mb-4">Some terms from your list are specific tools used for "structuring" (3D) within the above dimensions:</p>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 mb-6">
+                    <h3 class="text-xl font-semibold text-center text-teal-800 mb-4">Geometric Model Distribution</h3>
+                    <p class="text-center text-slate-600 mb-4">This chart shows the distribution of various "geometric" thinking models mentioned in the report's appendix.</p>
+                    <div class="chart-container">
+                        <canvas id="geometryChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>`Possible/Impossible Triangle`: <strong>(3D)</strong> A typical "surface" trade-off model (e.g., "Quality-Cost-Speed").</li>
+                        <li>`Quadrant/Matrix Thinking`: <strong>(3D)</strong> A "surface" analysis tool formed by two "linear" binary axes (2D) (e.g., "Important-Urgent").</li>
+                        <li>`Pentagon/Five-sided Thinking`: <strong>(3D/4D)</strong> A polygonal structure for assessing multiple key facets of a "solid" (e.g., "Porter's Five Forces").</li>
+                        <li>`Six-color/Hexagon Thinking`: <strong>(4D)</strong> Represents multiple perspectives of a "solid," emphasizing "multi-dimensional" review (e.g., "Six Thinking Hats").</li>
+                        <li>`Tangram Thinking`: <strong>(3D)</strong> `Modular Thinking` where basic elements (points/lines) combine into complex structures (surfaces/solids).</li>
+                        <li>`Octahedron/Spectrum Thinking`: <strong>(4D)</strong> Emphasizes "panorama" and "solid," seeing all facets of a problem.</li>
+                        <li>`Nine-nines-to-one/Perfect-ten Thinking`: <strong>(0D/6D)</strong> Philosophical pursuits of "unity" and "completeness," the goal of "meta-thinking."</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="conclusion" class="content-section hidden max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">Comprehensive Review: From Spectrum to Dance</h2>
+                <p class="text-lg text-slate-700 mb-4">The list you provided is, in itself, a magnificent thinking spectrum.</p>
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <h3 class="text-2xl font-semibold mb-3">1. On "Tension"</h3>
+                        <p class="text-slate-700">The vast majority of mindsets (especially in "2D") appear in pairs (`Positive/Negative`, `Macro/Micro`, `Left/Right`). This "tension" is not to determine a winner, but to <strong>define the "decision space"</strong>. The balance beam exists precisely because there is pull from both sides.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <h3 class="text-2xl font-semibold mb-3">2. On "Balance"</h3>
+                        <p class="text-slate-700">Balance is not static; it is <strong>dynamic adjustment</strong>. It's not `Equilibrium Thinking` but a combination of `Dynamic Thinking` + `Balance Thinking`. True balance is when `Meta-thinking` (6D), after assessing the current scenario, calls upon the most "adaptive" (`Adaptive Thinking`) tool from the spectrum.</p>
+                        <p class="text-slate-700 mt-2 bg-slate-100 p-3 rounded-md">e.g.: In early startup (point), use `Atomic Thinking` + `Lean Thinking`; at a plateau (surface), switch to `Systems Thinking` + `Ecological Thinking`; during transformation (flux), activate `Zeroing Thinking` + `Evolutionary Thinking`.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <h3 class="text-2xl font-semibold mb-3">3. On "Richness"</h3>
+                        <p class="text-slate-700">Richness comes from <strong>"fusion"</strong> and <strong>"up-leveling"</strong>.</p>
+                        <ul class="list-disc list-inside text-slate-700 mt-2 space-y-1">
+                            <li>When `Iterative Thinking` (flux) combines with `Lean Thinking` (line), "Agile Development" is born.</li>
+                            <li>When `Systems Thinking` (surface) combines with `Evolutionary Thinking` (flux), "Complexity Science" is born.</li>
+                            <li>When `AI Thinking` (meta) combines with `Network Thinking` (surface), "Large Language Models" are born.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-3 text-teal-800">Your Deeper Reading Guide</h3>
+                    <p class="text-lg text-slate-700 mb-4">This review is, in itself, a "deep reading map." Your next step is not to memorize all the terms, but to practice "up-leveling":</p>
+                    <ol class="list-decimal list-inside space-y-3 text-slate-700">
+                        <li class="bg-white p-4 rounded-lg border border-slate-200"><strong>Awareness (6D):</strong> Start to deliberately observe which "dimension" you are in at this moment. Are you at a `point` or on a `line`?</li>
+                        <li class="bg-white p-4 rounded-lg border border-slate-200"><strong>Expansion (2D):</strong> When you use `Forward Thinking`, force yourself to switch to `Reverse Thinking` and feel the "tension."</li>
+                        <li class="bg-white p-4 rounded-lg border border-slate-200"><strong>Modeling (3D):</strong> Try using a `Framework Thinking` (like a "quadrant") to analyze a problem you face.</li>
+                        <li class="bg-white p-4 rounded-lg border border-slate-200"><strong>Up-leveling (4D/5D):</strong> Ask yourself: How will this "framework" "evolve" over "time" (`Dynamic Thinking`)?</li>
+                    </ol>
+                    <p class="text-lg text-slate-700 mt-6 font-medium text-center">Ultimately, you will become that "dancer," moving with poise on this thinking spectrum, performing your own dance of tension, balance, and richness.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const chartColors = {
+                teal: 'rgba(13, 148, 136, 0.6)',
+                tealBorder: 'rgba(13, 148, 136, 1)',
+                sky: 'rgba(14, 165, 233, 0.6)',
+                skyBorder: 'rgba(14, 165, 233, 1)',
+                text: '#334155',
+                grid: '#e2e8f0'
+            };
+
+            const defaultChartOptions = {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: chartColors.text
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#ffffff',
+                        titleColor: '#0f766e',
+                        bodyColor: chartColors.text,
+                        borderColor: chartColors.grid,
+                        borderWidth: 1
+                    }
+                }
+            };
+
+            try {
+                const dimCtx = document.getElementById('dimensionsChart').getContext('2d');
+                new Chart(dimCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['0D (Origin)', '1D (Focus)', '2D (Duality)', '3D (Structure)', '4D (Panorama)', '5D (Flux)', '6D (Meta)'],
+                        datasets: [
+                            {
+                                label: 'Abstraction Level',
+                                data: [1, 2, 3, 4, 5, 6, 7],
+                                backgroundColor: chartColors.teal,
+                                borderColor: chartColors.tealBorder,
+                                borderWidth: 2,
+                                pointBackgroundColor: chartColors.tealBorder,
+                                pointRadius: 4
+                            },
+                            {
+                                label: 'Relational Breadth',
+                                data: [1, 2, 5, 4, 6, 6, 7],
+                                backgroundColor: chartColors.sky,
+                                borderColor: chartColors.skyBorder,
+                                borderWidth: 2,
+                                pointBackgroundColor: chartColors.skyBorder,
+                                pointRadius: 4
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        scales: {
+                            r: {
+                                angleLines: { color: chartColors.grid },
+                                grid: { color: chartColors.grid },
+                                pointLabels: { color: chartColors.text, font: { size: 13 } },
+                                ticks: {
+                                    color: chartColors.text,
+                                    backdropColor: 'transparent',
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Error creating dimensionsChart:', e);
+            }
+
+            try {
+                const dualityCtx = document.getElementById('dualityChart').getContext('2d');
+                new Chart(dualityCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2.1 Direction & Process', '2.2 State & Scale', '2.3 Strategy & Trade-offs', '2.4 Perspective & Stance'],
+                        datasets: [{
+                            label: '# of Duality Pairs',
+                            data: [5, 6, 5, 5],
+                            backgroundColor: [
+                                'rgba(107, 114, 128, 0.6)',
+                                'rgba(59, 130, 246, 0.6)',
+                                'rgba(234, 179, 8, 0.6)',
+                                'rgba(239, 68, 68, 0.6)',
+                            ],
+                            borderColor: [
+                                'rgba(107, 114, 128, 1)',
+                                'rgba(59, 130, 246, 1)',
+                                'rgba(234, 179, 8, 1)',
+                                'rgba(239, 68, 68, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        plugins: {
+                            ...defaultChartOptions.plugins,
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: chartColors.grid },
+                                ticks: { color: chartColors.text, stepSize: 1 }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: chartColors.text }
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Error creating dualityChart:', e);
+            }
+
+            try {
+                const geometryCtx = document.getElementById('geometryChart').getContext('2d');
+                new Chart(geometryCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Triangle (3)', 'Quad (4)', 'Pentagon (5)', 'Hexagon (6)', 'Tangram (7)', 'Octahedron (8)', 'Nine/Ten (9+)'],
+                        datasets: [{
+                            label: 'Model Count',
+                            data: [1, 1, 1, 1, 1, 1, 2],
+                            backgroundColor: [
+                                'rgba(253, 186, 116, 0.7)',
+                                'rgba(134, 239, 172, 0.7)',
+                                'rgba(147, 197, 253, 0.7)',
+                                'rgba(196, 181, 253, 0.7)',
+                                'rgba(253, 224, 71, 0.7)',
+                                'rgba(240, 171, 252, 0.7)',
+                                'rgba(110, 231, 183, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(251, 146, 60, 1)',
+                                'rgba(74, 222, 128, 1)',
+                                'rgba(96, 165, 250, 1)',
+                                'rgba(167, 139, 250, 1)',
+                                'rgba(234, 179, 8, 1)',
+                                'rgba(232, 121, 249, 1)',
+                                'rgba(52, 211, 153, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        plugins: {
+                            ...defaultChartOptions.plugins,
+                            legend: {
+                                ...defaultChartOptions.plugins.legend,
+                                position: 'right',
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Error creating geometryChart:', e);
+            }
+            
+            const mainNav = document.getElementById('main-nav');
+            const navLinks = mainNav.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            mainNav.addEventListener('click', (e) => {
+                const link = e.target.closest('.nav-link');
+                if (!link) return;
+                
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                
+                contentSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                link.classList.add('active');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+                }
+            });
+
+            const dim2Nav = document.getElementById('dim2-nav');
+            const dim2SubLinks = dim2Nav.querySelectorAll('.sub-nav-link');
+            const dim2SubSections = document.querySelectorAll('.sub-content-section');
+
+            dim2Nav.addEventListener('click', (e) => {
+                const link = e.target.closest('.sub-nav-link');
+                if (!link) return;
+
+                const targetId = link.dataset.target.substring(1);
+
+                dim2SubLinks.forEach(subLink => {
+                    subLink.classList.remove('active');
+                });
+                dim2SubSections.forEach(subSection => {
+                    subSection.classList.add('hidden');
+                });
+
+                link.classList.add('active');
+                const targetSubSection = document.getElementById(targetId);
+                if (targetSubSection) {
+                    targetSubSection.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+这是一个 .gitignore 文件，用于确保某些文件不会被提交到 Git 仓库。
+操作系统文件 (OS generated files)
+.DS_Store .DS_Store? ._* .Spotlight-V100 .Trashes ehthumbs.db Thumbs.db desktop.ini
+编辑器配置 (Editor configuration)
+.vscode/ .idea/ *.sublime-project *.sublime-workspace
+应用程序日志和临时文件 (Application logs & temp files)
+*.log *.tmp *.temp
+=== 未来的网站建设 (Future Website Development) ===
+依赖包 (Dependency directories)
+node_modules/ bower_components/
+构建产物 (Build output)
+dist/ build/ out/ public/ .next/ .nuxt/
+环境变量 (Environment variables)
+.env .env.local .env.*.local *.env
+缓存 (Cache)
+.cache/ .npm/ .yarn/
