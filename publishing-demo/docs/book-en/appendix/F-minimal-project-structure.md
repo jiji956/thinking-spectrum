@@ -3,13 +3,14 @@
 > 🌏 **中文版本：**  
 > 请参见 [`docs/book/appendix/F-minimal-project-structure.md`](../../book/appendix/F-minimal-project-structure.md)
 
-A minimal project structure is required
-to execute MVPL and Route A.
+## Purpose
+This appendix defines the minimal structure required to execute Route A.
 
-Required elements:
+## Required Structure
 - Makefile at project root
-- docs/ containing source content
-- dist/ containing system-generated artifacts
+- docs/ for source content
+- dist/ for system-generated artifacts
 
-If any element is missing,
+## Normative Statement
+If any required element is missing,
 completion cannot be verified.
