@@ -58,6 +58,13 @@ there must be a pass/fail threshold.
 
 In publishing education, that threshold is usually missing.
 
+![Figure 5 — Publishing as a Gradable Assignment](../diagrams/export/fig-05-grading-acceptance-model.svg)
+
+> **Figure 5 — Publishing as a Gradable Assignment**  
+> Scores are not assigned by instructors’ subjective judgment.  
+> They are produced by system evidence: passing commands, reproducible artifacts, and traceable versions.
+
+
 Route A as a grading primitive
 
 Route A introduces a minimal grading unit.
