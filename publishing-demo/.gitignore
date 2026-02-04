@@ -1,5 +1,13 @@
+# ==================================================
+# Publishing Demo / Teaching Template .gitignore
+# ==================================================
 
-# --- Windows home noise ---
+# --- OS / Editor noise ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Windows legacy home directories (Git Bash noise) ---
 Application Data/
 Cookies/
 Local Settings/
@@ -11,3 +19,41 @@ Start Menu/
 Templates/
 My Documents/
 Documents/
+
+# --- Shell / temp files ---
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Python / tooling cache (if any) ---
+__pycache__/
+*.py[cod]
+.env
+.venv/
+
+# --- Build outputs ---
+# NOTE: dist/ is a verifiable publishing artifact.
+# It is intentionally NOT ignored.
+# dist/
+
+# --- Node / package managers (future-proof) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- CI / coverage ---
+.coverage
+coverage/
+
+# ==================================================
+# Rule of thumb:
+# Ignore environment noise, never ignore proof of completion.
+# ==================================================
