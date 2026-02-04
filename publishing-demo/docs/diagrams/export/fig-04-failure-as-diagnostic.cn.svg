@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="960" height="600" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: 700 22px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111; }
+      .subtitle { font: 400 14px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #333; }
+      .layerTitle { font: 700 18px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111; }
+      .layerDesc { font: 400 13px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #333; }
+      .box { rx: 14; ry: 14; stroke: #222; stroke-width: 2; fill: #fff; }
+      .hint { font: 400 12px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #555; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="40" y="50" class="title">图 4｜失败不是错误，而是定位结果</text>
+  <text x="40" y="74" class="subtitle">系统失败 = 闭环在某一层无法继续</text>
+
+  <!-- Layers -->
+  <!-- Entry -->
+  <rect x="240" y="110" width="480" height="70" class="box"/>
+  <text x="480" y="145" text-anchor="middle" class="layerTitle">入口失败（Entry Failure）</text>
+  <text x="480" y="165" text-anchor="middle" class="layerDesc">不在正确目录 / 缺失必要文件</text>
+
+  <!-- Rule -->
+  <rect x="240" y="190" width="480" height="70" class="box"/>
+  <text x="480" y="225" text-anchor="middle" class="layerTitle">规则失败（Rule Failure）</text>
+  <text x="480" y="245" text-anchor="middle" class="layerDesc">规则缺失、不一致、不可执行</text>
+
+  <!-- Execution -->
+  <rect x="240" y="270" width="480" height="70" class="box"/>
+  <text x="480" y="305" text-anchor="middle" class="layerTitle">执行失败（Execution Failure）</text>
+  <text x="480" y="325" text-anchor="middle" class="layerDesc">命令执行失败（make / CI / script）</text>
+
+  <!-- Verification -->
+  <rect x="240" y="350" width="480" height="70" class="box"/>
+  <text x="480" y="385" text-anchor="middle" class="layerTitle">验证失败（Verification Failure）</text>
+  <text x="480" y="405" text-anchor="middle" class="layerDesc">QA 未通过，规则未满足</text>
+
+  <!-- Output -->
+  <rect x="240" y="430" width="480" height="70" class="box"/>
+  <text x="480" y="465" text-anchor="middle" class="layerTitle">产物失败（Output Failure）</text>
+  <text x="480" y="485" text-anchor="middle" class="layerDesc">无产物 / 产物未落盘</text>
+
+  <!-- Footer -->
+  <text x="40" y="560" class="hint">
+    提示：失败不是否定创作者，而是为下一次修正提供精确位置。
+  </text>
+</svg>
