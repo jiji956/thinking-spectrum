@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="960" height="600" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#222"/>
+    </marker>
+    <style>
+      .title { font: 700 22px "PingFang SC","Microsoft YaHei",sans-serif; fill:#111; }
+      .subtitle { font: 400 14px "PingFang SC","Microsoft YaHei",sans-serif; fill:#333; }
+      .lane { stroke:#222; stroke-width:2; fill:none; }
+      .laneLabel { font:700 14px "PingFang SC","Microsoft YaHei",sans-serif; fill:#111; }
+      .box { rx:14; ry:14; stroke:#222; stroke-width:2; fill:#fff; }
+      .boxTitle { font:700 16px "PingFang SC","Microsoft YaHei",sans-serif; fill:#111; }
+      .boxSub { font:400 13px "PingFang SC","Microsoft YaHei",sans-serif; fill:#333; }
+      .arrow { stroke:#222; stroke-width:3; fill:none; marker-end:url(#arrow); }
+      .note { font:400 12px "PingFang SC","Microsoft YaHei",sans-serif; fill:#555; }
+      .score { font:700 14px "PingFang SC","Microsoft YaHei",sans-serif; fill:#111; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="40" y="50" class="title">图 5｜出版作为可评分作业（自动验收模型）</text>
+  <text x="40" y="74" class="subtitle">评分来自系统证据：命令通过 + 产物存在 + 版本可追溯</text>
+
+  <!-- Swimlanes -->
+  <rect x="40" y="110" width="880" height="140" class="lane"/>
+  <text x="60" y="135" class="laneLabel">学生 / 作者（Student）</text>
+
+  <rect x="40" y="260" width="880" height="170" class="lane"/>
+  <text x="60" y="285" class="laneLabel">系统（System）</text>
+
+  <rect x="40" y="440" width="880" height="120" class="lane"/>
+  <text x="60" y="465" class="laneLabel">教师 / 组织（Instructor / Org）</text>
+
+  <!-- Student boxes -->
+  <rect x="120" y="150" width="230" height="70" class="box"/>
+  <text x="235" y="180" text-anchor="middle" class="boxTitle">提交内容</text>
+  <text x="235" y="202" text-anchor="middle" class="boxSub">docs/ + Makefile 约定</text>
+
+  <rect x="400" y="150" width="230" height="70" class="box"/>
+  <text x="515" y="180" text-anchor="middle" class="boxTitle">执行命令</text>
+  <text x="515" y="202" text-anchor="middle" class="boxSub">make bootstrap && make build</text>
+
+  <rect x="680" y="150" width="200" height="70" class="box"/>
+  <text x="780" y="180" text-anchor="middle" class="boxTitle">提交记录</text>
+  <text x="780" y="202" text-anchor="middle" class="boxSub">commit / tag（可追溯）</text>
+
+  <!-- System boxes -->
+  <rect x="120" y="310" width="230" height="80" class="box"/>
+  <text x="235" y="345" text-anchor="middle" class="boxTitle">QA Gate</text>
+  <text x="235" y="368" text-anchor="middle" class="boxSub">通过 / 不通过</text>
+
+  <rect x="400" y="310" width="230" height="80" class="box"/>
+  <text x="515" y="345" text-anchor="middle" class="boxTitle">Build Gate</text>
+  <text x="515" y="368" text-anchor="middle" class="boxSub">生成 dist/ 产物</text>
+
+  <rect x="680" y="310" width="200" height="80" class="box"/>
+  <text x="780" y="345" text-anchor="middle" class="boxTitle">Evidence</text>
+  <text x="780" y="368" text-anchor="middle" class="boxSub">日志 + 产物 + 版本</text>
+
+  <!-- Rubric box (system-produced score) -->
+  <rect x="120" y="400" width="760" height="20" fill="none"/>
+  <text x="120" y="420" class="note">评分规则（示例 100 分，可按课程调整权重）：</text>
+
+  <text x="140" y="410" class="score" transform="translate(0,30)">+ 30 分：QA 通过</text>
+  <text x="330" y="410" class="score" transform="translate(0,30)">+ 40 分：Build 成功</text>
+  <text x="560" y="410" class="score" transform="translate(0,30)">+ 20 分：dist 产物齐全（zh+en）</text>
+  <text x="820" y="410" class="score" transform="translate(-10,30)">+ 10 分：版本可追溯（tag/release）</text>
+
+  <!-- Instructor boxes -->
+  <rect x="120" y="485" width="330" height="55" class="box"/>
+  <text x="285" y="517" text-anchor="middle" class="boxTitle">验收（Pass/Fail）</text>
+
+  <rect x="500" y="485" width="380" height="55" class="box"/>
+  <text x="690" y="517" text-anchor="middle" class="boxTitle">评分与反馈（基于证据）</text>
+
+  <!-- Arrows -->
+  <path class="arrow" d="M 350 185 L 400 185" />
+  <path class="arrow" d="M 630 185 L 680 185" />
+  <path class="arrow" d="M 515 220 L 235 310" />
+  <path class="arrow" d="M 515 220 L 515 310" />
+  <path class="arrow" d="M 515 220 L 780 310" />
+  <path class="arrow" d="M 350 350 L 400 350" />
+  <path class="arrow" d="M 630 350 L 680 350" />
+  <path class="arrow" d="M 780 390 L 285 485" />
+  <path class="arrow" d="M 780 390 L 690 485" />
+
+  <!-- Footer note -->
+  <text x="40" y="585" class="note">要点：老师不“判断完成”，只解释系统给出的证据与结果。</text>
+</svg>
