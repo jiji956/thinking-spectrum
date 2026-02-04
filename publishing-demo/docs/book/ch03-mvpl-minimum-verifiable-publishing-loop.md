@@ -27,6 +27,13 @@
 
 3.2 MVPL 的定义
 
+![图 1｜最小可验证出版闭环（MVPL）](../diagrams/export/fig-01-mvpl-loop.cn.svg)
+
+> **图 1｜最小可验证出版闭环（MVPL）**  
+> 出版是否完成，不取决于写作者的主观判断，  
+> 而取决于系统是否基于可执行规则生成产物并完成验证。
+
+
 MVPL，是本书提出的核心方法论：
 
 MVPL（Minimum Verifiable Publishing Loop）
