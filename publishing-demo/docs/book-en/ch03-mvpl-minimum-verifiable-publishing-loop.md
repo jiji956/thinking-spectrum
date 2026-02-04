@@ -60,6 +60,21 @@ introduces subjective interpretation
 
 becomes fragile under teaching or collaboration
 
+![Figure 1 — MVPL: Minimum Verifiable Publishing Loop](../diagrams/export/fig-01-mvpl-loop.svg)
+
+> **Figure 1 — MVPL: Minimum Verifiable Publishing Loop**  
+> Publishing completion is not a subjective judgment,  
+> but a system-confirmed outcome based on executable rules,  
+> generated artifacts, and verification.
+
+![Figure 1 — MVPL: Minimum Verifiable Publishing Loop](../diagrams/export/fig-01-mvpl-loop.svg)
+
+> **Figure 1 — MVPL: Minimum Verifiable Publishing Loop**  
+> Publishing completion is not a subjective judgment,  
+> but a system-confirmed outcome based on executable rules,  
+> generated artifacts, and verification.
+
+
 MVPL removes everything that is not required
 to confirm one fact:
 
