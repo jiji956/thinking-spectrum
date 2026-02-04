@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch08-publishing-as-gradable-assignment.md`](../book-en/ch08-publishing-as-gradable-assignment.md)
+
 第 8 章｜出版如何成为可评分的作业
 
 当“完成”可以被系统判定，

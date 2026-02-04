@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch06-when-the-system-says-fail.md`](../book-en/ch06-when-the-system-says-fail.md)
+
 第 6 章｜当系统说“失败”时，你该怎么办
 
 在可验证的出版系统里，

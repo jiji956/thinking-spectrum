@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch07-why-writing-teaching-is-painful.md`](../book-en/ch07-why-writing-teaching-is-painful.md)
+
 第 7 章｜写作教学为什么一直很痛苦
 
 当“完成”无法被判定时，

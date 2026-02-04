@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/preface.md`](../book-en/preface.md)
+
 前言｜为什么你需要这本书
 
 你可能已经写过很多东西。

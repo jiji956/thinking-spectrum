@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch09-ai-writing-is-not-about-quality.md`](../book-en/ch09-ai-writing-is-not-about-quality.md)
+
 第 9 章｜AI 写作的真正问题不是质量
 
 AI 写作引发的最大危机，

@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch10-publishing-as-reproducible-system.md`](../book-en/ch10-publishing-as-reproducible-system.md)
+
 第 10 章｜当出版成为一种可复制的系统
 
 当完成可以被系统判定，

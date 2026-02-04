@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch05-ten-minute-verifiable-publishing.md`](../book-en/ch05-ten-minute-verifiable-publishing.md)
+
 # 第 5 章｜10 分钟完成一次出版体验
 
 第 5 章｜10 分钟完成一次出版体验

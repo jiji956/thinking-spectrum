@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch02-completion-is-a-system-fact.md`](../book-en/ch02-completion-is-a-system-fact.md)
+
 第 2 章｜出版不是感觉，而是系统事实
 
 当“完成”需要被讨论时，它就还没有完成。

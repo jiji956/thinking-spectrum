@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch01-writing-is-not-done.md`](../book-en/ch01-writing-is-not-done.md)
+
 第 1 章｜写完，不等于完成
 
 大多数写作者失败的原因，不是写不好，

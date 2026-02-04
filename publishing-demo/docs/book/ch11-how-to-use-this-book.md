@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch11-how-to-use-this-book.md`](../book-en/ch11-how-to-use-this-book.md)
+
 第 11 章｜本书如何使用
 
 这不是一本要求你读完的书，

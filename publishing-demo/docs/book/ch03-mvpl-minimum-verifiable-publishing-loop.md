@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch03-mvpl-minimum-verifiable-publishing-loop.md`](../book-en/ch03-mvpl-minimum-verifiable-publishing-loop.md)
+
 第 3 章｜MVPL：最小可验证出版闭环
 
 如果完成必须被证明，那么就必须有一个最小、稳定、可重复的证明结构。

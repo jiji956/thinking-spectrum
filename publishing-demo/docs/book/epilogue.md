@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/epilogue.md`](../book-en/epilogue.md)
+
 结语｜当你真正完成一次出版
 
 完成的那一刻，

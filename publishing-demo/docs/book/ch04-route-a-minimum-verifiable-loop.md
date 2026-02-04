@@ -1,3 +1,6 @@
+> 🌐 **English version available:**  
+> See [`docs/book-en/ch04-route-a-minimum-verifiable-loop.md`](../book-en/ch04-route-a-minimum-verifiable-loop.md)
+
 第 4 章｜路线 A：出版的最小可验证闭环
 
 如果 MVPL 是一套原则，

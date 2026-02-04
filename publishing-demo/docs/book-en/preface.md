@@ -1,3 +1,6 @@
+> 🌏 **中文版本：**  
+> 请参见 [`docs/book/preface.md`](../book/preface.md)
+
 Preface｜Why This Book Exists
 
 (International Edition)
