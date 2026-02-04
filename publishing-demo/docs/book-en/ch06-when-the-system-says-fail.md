@@ -15,6 +15,13 @@ Chapter 6｜When the System Says “Fail”
 Failure in this system is not an exception.
 It is an expected outcome.
 
+![Figure 4 — Failure as a Diagnostic Signal](../diagrams/export/fig-04-failure-as-diagnostic.svg)
+
+> **Figure 4 — Failure as a Diagnostic Signal**  
+> When the system returns *fail*, it is not rejecting the author.  
+> It precisely identifies the layer where the publishing loop cannot proceed.
+
+
 In fact, a system that never fails
 cannot reliably confirm completion.
 

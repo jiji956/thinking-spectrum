@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="960" height="600" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: 700 22px system-ui, -apple-system, BlinkMacSystemFont, sans-serif; fill: #111; }
+      .subtitle { font: 400 14px system-ui, -apple-system, BlinkMacSystemFont, sans-serif; fill: #333; }
+      .layerTitle { font: 700 18px system-ui, -apple-system, BlinkMacSystemFont, sans-serif; fill: #111; }
+      .layerDesc { font: 400 13px system-ui, -apple-system, BlinkMacSystemFont, sans-serif; fill: #333; }
+      .box { rx: 14; ry: 14; stroke: #222; stroke-width: 2; fill: #fff; }
+      .hint { font: 400 12px system-ui, -apple-system, BlinkMacSystemFont, sans-serif; fill: #555; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="40" y="50" class="title">Figure 4 — Failure as a Diagnostic Signal</text>
+  <text x="40" y="74" class="subtitle">System failure means the loop cannot continue at a specific layer</text>
+
+  <!-- Entry -->
+  <rect x="240" y="110" width="480" height="70" class="box"/>
+  <text x="480" y="145" text-anchor="middle" class="layerTitle">Entry Failure</text>
+  <text x="480" y="165" text-anchor="middle" class="layerDesc">Wrong directory or missing required files</text>
+
+  <!-- Rule -->
+  <rect x="240" y="190" width="480" height="70" class="box"/>
+  <text x="480" y="225" text-anchor="middle" class="layerTitle">Rule Failure</text>
+  <text x="480" y="245" text-anchor="middle" class="layerDesc">Rules missing, inconsistent, or not executable</text>
+
+  <!-- Execution -->
+  <rect x="240" y="270" width="480" height="70" class="box"/>
+  <text x="480" y="305" text-anchor="middle" class="layerTitle">Execution Failure</text>
+  <text x="480" y="325" text-anchor="middle" class="layerDesc">Command or script execution failed</text>
+
+  <!-- Verification -->
+  <rect x="240" y="350" width="480" height="70" class="box"/>
+  <text x="480" y="385" text-anchor="middle" class="layerTitle">Verification Failure</text>
+  <text x="480" y="405" text-anchor="middle" class="layerDesc">QA checks did not pass</text>
+
+  <!-- Output -->
+  <rect x="240" y="430" width="480" height="70" class="box"/>
+  <text x="480" y="465" text-anchor="middle" class="layerTitle">Output Failure</text>
+  <text x="480" y="485" text-anchor="middle" class="layerDesc">No artifacts generated or outputs not persisted</text>
+
+  <!-- Footer -->
+  <text x="40" y="560" class="hint">
+    Tip: Failure does not judge the author — it identifies where correction is needed.
+  </text>
+</svg>
