@@ -21,6 +21,12 @@ This chapter does not introduce new theory.
 It introduces the smallest runnable form
 of the MVPL definition from Chapter 3.
 
+![Figure 2 — Route A: Executable Publishing Loop](../diagrams/export/fig-02-route-a-executable-loop.svg)
+
+> **Figure 2 — Route A: Executable Publishing Loop**  
+> This figure defines the executable loop for publishing, detailing the sequential actions required for completion: Input → Execution → Output → Verification.
+
+
 What Route A is—and what it is not
 
 Route A is:
