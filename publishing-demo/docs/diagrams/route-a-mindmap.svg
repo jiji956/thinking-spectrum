@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .box { fill: #ffffff; stroke: #111111; stroke-width: 2; rx: 18; ry: 18; }
+      .pill { fill: #ffffff; stroke: #111111; stroke-width: 2; rx: 999; ry: 999; }
+      .title { font: 700 30px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill: #111111; }
+      .h { font: 700 18px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill: #111111; }
+      .t { font: 400 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill: #111111; }
+      .s { font: 400 14px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill: #111111; }
+      .mono { font: 600 15px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New"; fill: #111111; }
+      .line { stroke: #111111; stroke-width: 2; fill: none; }
+      .dash { stroke: #111111; stroke-width: 2; fill: none; stroke-dasharray: 8 8; }
+      .arrow { marker-end: url(#arrow); }
+    </style>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="800"/>
+
+  <!-- Header -->
+  <text class="title" x="60" y="70">路线 A｜出版最小可验证闭环（1 页心智模型）</text>
+  <text class="t" x="60" y="105">目标：不靠理解，只靠系统反馈，跑通一次可重复、可验证、可交付的出版链路。</text>
+
+  <!-- Center loop -->
+  <rect class="box" x="330" y="170" width="540" height="440" rx="22" ry="22"/>
+  <text class="h" x="360" y="210">最小闭环（Minimum Verifiable Publishing Loop）</text>
+  <text class="mono" x="360" y="242">bootstrap → qa → build → dist/</text>
+
+  <!-- Step boxes -->
+  <rect class="box" x="380" y="280" width="220" height="110" rx="18" ry="18"/>
+  <text class="h" x="410" y="315">1) bootstrap</text>
+  <text class="s" x="410" y="345">系统入口：把你放到</text>
+  <text class="s" x="410" y="366">“可以继续”的起跑线</text>
+
+  <rect class="box" x="620" y="280" width="220" height="110" rx="18" ry="18"/>
+  <text class="h" x="650" y="315">2) QA</text>
+  <text class="s" x="650" y="345">系统自检关卡：</text>
+  <text class="s" x="650" y="366">不通过，不允许构建</text>
+
+  <rect class="box" x="500" y="410" width="220" height="110" rx="18" ry="18"/>
+  <text class="h" x="530" y="445">3) build</text>
+  <text class="s" x="530" y="475">生成可交付产物</text>
+  <text class="s" x="530" y="496">并落到 dist/</text>
+
+  <!-- Arrows inside -->
+  <path class="line arrow" d="M 600 335 L 620 335"/>
+  <path class="line arrow" d="M 730 390 L 660 410"/>
+  <path class="line arrow" d="M 540 520 L 470 560"/>
+  <path class="line arrow" d="M 470 560 L 470 390"/>
+
+  <!-- dist outputs -->
+  <rect class="pill" x="445" y="545" width="310" height="50"/>
+  <text class="mono" x="485" y="577">dist/  →  *.zh.md  +  *.en.md</text>
+
+  <!-- Minimal command -->
+  <rect class="pill" x="370" y="620" width="460" height="60"/>
+  <text class="h" x="400" y="652">最简一次性入口（推荐）</text>
+  <text class="mono" x="400" y="677">make bootstrap && make build</text>
+
+  <!-- Left: red/green rule -->
+  <rect class="box" x="60" y="170" width="240" height="230" rx="18" ry="18"/>
+  <text class="h" x="85" y="205">红绿灯规则</text>
+  <text class="t" x="85" y="238">✅ 看到 OK 才继续</text>
+  <text class="t" x="85" y="268">❌ 任何报错立刻停</text>
+  <text class="t" x="85" y="298">→ 先修复，再往前</text>
+  <path class="dash arrow" d="M 300 285 L 380 335"/>
+
+  <!-- Left: what is verifiable -->
+  <rect class="box" x="60" y="420" width="240" height="190" rx="18" ry="18"/>
+  <text class="h" x="85" y="455">什么叫“可验证”</text>
+  <text class="t" x="85" y="488">1) 命令执行完成</text>
+  <text class="t" x="85" y="518">2) 无错误输出</text>
+  <text class="t" x="85" y="548">3) dist/ 有产物</text>
+  <path class="dash arrow" d="M 300 515 L 445 570"/>
+
+  <!-- Right: what Route A is NOT -->
+  <rect class="box" x="910" y="170" width="230" height="230" rx="18" ry="18"/>
+  <text class="h" x="935" y="205">路线 A 不追求</text>
+  <text class="t" x="935" y="238">高级排版</text>
+  <text class="t" x="935" y="268">多平台发布</text>
+  <text class="t" x="935" y="298">复杂自动化</text>
+  <text class="t" x="935" y="328">AI 花活</text>
+  <path class="dash arrow" d="M 910 300 L 840 335"/>
+
+  <!-- Right: what Route A guarantees -->
+  <rect class="box" x="910" y="420" width="230" height="190" rx="18" ry="18"/>
+  <text class="h" x="935" y="455">路线 A 保证</text>
+  <text class="t" x="935" y="488">新手能跑通</text>
+  <text class="t" x="935" y="518">结果能检查</text>
+  <text class="t" x="935" y="548">失败能定位</text>
+  <path class="dash arrow" d="M 910 515 L 830 545"/>
+
+  <!-- Footer note -->
+  <text class="s" x="60" y="760">图示建议：用于 README 顶部、教程首页、以及书稿“路线 A”概念章作为总览图。</text>
+</svg>
