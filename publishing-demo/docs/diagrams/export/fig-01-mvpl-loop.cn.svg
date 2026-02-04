@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="960" height="540" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#222"/>
+    </marker>
+
+    <style>
+      .title { font: 700 22px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111; }
+      .subtitle { font: 400 14px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #333; }
+      .boxTitle { font: 700 20px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111; }
+      .boxSub { font: 400 13px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #333; }
+      .box { rx: 16; ry: 16; stroke: #222; stroke-width: 2; fill: #fff; }
+      .arrow { stroke: #222; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .hint { font: 400 12px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #555; }
+    </style>
+  </defs>
+
+  <text x="40" y="50" class="title">图 1｜最小可验证出版闭环（MVPL）</text>
+  <text x="40" y="74" class="subtitle">输入 → 规则 → 产物 → 验证 →（形成闭环）</text>
+
+  <circle cx="480" cy="285" r="70" stroke="#bbb" stroke-width="2" fill="none"/>
+  <text x="480" y="278" text-anchor="middle" class="subtitle">完成不是主观判断</text>
+  <text x="480" y="300" text-anchor="middle" class="subtitle">而是系统确认</text>
+
+  <rect x="90" y="225" width="220" height="120" class="box"/>
+  <text x="200" y="265" text-anchor="middle" class="boxTitle">输入</text>
+  <text x="200" y="292" text-anchor="middle" class="boxSub">源内容</text>
+
+  <rect x="370" y="115" width="220" height="120" class="box"/>
+  <text x="480" y="155" text-anchor="middle" class="boxTitle">规则</text>
+  <text x="480" y="182" text-anchor="middle" class="boxSub">可执行规则</text>
+
+  <rect x="650" y="225" width="220" height="120" class="box"/>
+  <text x="760" y="265" text-anchor="middle" class="boxTitle">产物</text>
+  <text x="760" y="292" text-anchor="middle" class="boxSub">系统生成内容</text>
+
+  <rect x="370" y="355" width="220" height="120" class="box"/>
+  <text x="480" y="395" text-anchor="middle" class="boxTitle">验证</text>
+  <text x="480" y="422" text-anchor="middle" class="boxSub">通过 / 不通过</text>
+
+  <text x="40" y="515" class="hint">提示：保持结构不变，中英文仅替换文字层。</text>
+</svg>
