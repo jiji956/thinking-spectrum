@@ -1,162 +1,109 @@
-<!-- ================================================= -->
-<!-- 🕙 10 分钟完成全书体验（超短路径） -->
-<!-- ================================================= -->
+# Publishing OS｜自动导航首页
 
-## 🕙 10 分钟完成全书体验
-
-> 如果你只有 10 分钟，这条路径可以让你**真正体验完整本书在做什么**。
-
-### 第 1 分钟｜看一张图（理解目标）
-
-看这张图，不需要读正文：
-
-* 🧠 路线 A 心智模型图：`diagrams/route-a-mindmap.svg`
-
-你只需要记住一句话：
-
-> **出版不是写完，而是被系统证明你写完了。**
+> 本页是全书与仓库的 **唯一导航入口**。  
+> 原则：**先选目标 → 再看图 → 再跑系统**。
 
 ---
 
-### 第 3–7 分钟｜跑通一次闭环（完成体验）
+## ⏱️ 10 分钟完成一次全书体验（强烈推荐）
 
-在项目根目录执行：
+**目标**：亲眼看到“完成是系统确认的结果”。
 
-```bash
-make bootstrap && make build
-如果成功，你会看到：
+1. 👉 看 **[Figure 1｜MVPL 最小可验证出版闭环](./diagrams/index.md)**  
+2. 👉 打开 **Chapter 3（MVPL 定义）**  
+   - CN：`docs/book/ch03-mvpl-minimum-verifiable-publishing-loop.md`
+   - EN：`docs/book-en/ch03-mvpl-minimum-verifiable-publishing-loop.md`
+3. 👉 在项目根目录运行：
+   ```bash
+   make bootstrap && make build
+👉 看到 dist/ 产物，即完成第一次“可验证出版”。
 
-dist/ 目录
+🧭 我该从哪开始？
+🧑‍🎓 我是新手 / 读者
+从 Figure 1 → Chapter 3 → Chapter 4 开始
 
-.zh.md + .en.md 文件
+目标：理解“完成不是主观判断”
 
-这一步完成时，你已经真实完成了一次出版闭环。
+🧑‍🏫 我是教师 / 课程设计者
+直接看 Figure 5｜出版作为可评分作业
 
-第 8–9 分钟｜给刚刚发生的事一个名字
-你刚刚做的事，叫做：
+对应章节：
 
-📘 路线 A：出版的最小可验证闭环
+CN：Chapter 8
 
-对应概念页：
+EN：Chapter 8
 
-concepts/route-a-minimum-loop.md
+目标：把写作变成可评分、可验收的作业
 
-第 10 分钟｜知道下一步往哪走
-现在，根据你的目标选择继续方向：
+🧑‍💻 我是工程 / 自动化 / CI
+看 Figure 2（Route A）+ Figure 4（Fail 诊断）
 
-👶 新手 / 教学 → 你已经完成，可以停下
+目标：把出版流程接入自动化系统
 
-🧑‍💻 长期写作 / 协作 → 看 reader-paths.md
+📊 全书插图（视觉索引）
+👉 All Figures / 全书插图目录
+用 5 张图理解整套方法论（MVPL → Route A → Fail → Grading）。
 
-🧠 系统 / 自动化 → 继续路线 B / C（规划中）
+📘 正文结构（中文版）
+Chapter 1｜写完不是完成
 
-到这里，你已经完整体验了这本书的核心思想。
+Chapter 2｜完成是一种系统事实
 
-你不需要继续读，
-除非你想走得更远。
+Chapter 3｜MVPL：最小可验证出版闭环
 
-<!-- ================================================= --> <!-- 下面开始是文档导航首页正文 --> <!-- ================================================= -->
-# 📚 文档导航首页（Docs Index）
+Chapter 4｜路线 A：可执行出版闭环
 
-欢迎来到本书与本仓库的文档系统。  
-这里不是按“章节顺序”组织内容，而是按**读者路径与使用目的**组织。
+Chapter 5｜10 分钟完成一次出版体验
 
-如果你只做一件事：  
-👉 **先找到你的位置，再往前走。**
+Chapter 6｜当系统说 Fail
 
----
+Chapter 7｜为什么写作教学如此痛苦
 
-## 🧭 快速分流（你现在该看哪一页？）
+Chapter 8｜出版如何成为可评分的作业
 
-### 👉 第一次来 / 新手
-我只想跑通一次，不关心原理。
+Chapter 9｜AI 写作的真正问题不是质量
 
-* 📘 起点教程（Windows）：`tutorial/T0-windows.md`
-* 🚀 一行命令：`make bootstrap && make build`
+Chapter 10｜当出版成为可复制的系统
 
----
+Chapter 11｜本书如何使用
 
-### 👉 已经跑通过一次
-我想知道“我刚刚完成的，到底算什么”。
+🌏 International Edition（English）
+Preface
 
-* 📘 概念锚点：`concepts/route-a-minimum-loop.md`
-* 🧠 配套图：`diagrams/route-a-mindmap.svg`
+Chapter 1–11（structure aligned with CN）
 
----
+Figures are structurally identical; text layers differ only.
 
-### 👉 想系统性使用 / 教学 / 扩展
-我想知道从新手到专家该怎么走。
+入口：
 
-* 🧭 读者路径总览：`reader-paths.md`
+docs/book-en/
 
----
+📎 附录（规范与工具）
+Appendix A｜MVPL 定义（规范文本）
 
-## 🚀 路线导航（按复杂度递进）
+Appendix B｜Route A 可验证清单
 
-### ✅ 路线 A｜最小可验证闭环（地基）
+Appendix C｜评分 / 验收 Rubric
 
-> 不靠理解，只靠系统反馈，完成一次可验证出版。
+Appendix D｜AI–Human 责任边界
 
-* 概念定义：`concepts/route-a-minimum-loop.md`
-* 总览图：`diagrams/route-a-mindmap.svg`
-* 快速入口：`make bootstrap && make build`
+Appendix E｜常见失败与处理
 
----
+Appendix F｜最小项目结构
 
-### 🔜 路线 B｜协作与规范（进阶）
+Appendix G｜发布与版本策略
 
-> 在不破坏路线 A 的前提下，引入规范与协作。
+Appendix H｜中英术语表
 
-* 写作规范（规划中）
-* QA 规则扩展（规划中）
-* 版本治理（规划中）
+🎯 使用原则（非常重要）
+不要猜完成：让系统告诉你。
 
----
+不要跳过 Fail：Fail 是定位信号。
 
-### 🔜 路线 C｜自动化与发布（高级）
+不要改结构：中英仅替换文字层。
 
-> 面向规模化、多平台与自动发布。
+不要先理解：先跑通，再回头读。
 
-* CI/CD 与发布链路（规划中）
-* 多书 / 多仓库治理（规划中）
-* AI + Human 协作边界（规划中）
-
----
-
-## 📊 图表与视觉导航
-
-所有图表集中管理，避免散落与重复解释：
-
-* 图表索引页：`diagrams/index.md`
-
----
-
-## 📂 文档结构一览（物理结构）
-
-docs/
-├─ index.md ← 本页（导航首页）
-├─ reader-paths.md ← 读者路径总览
-├─ tutorial/
-│ └─ T0-windows.md ← 新手起点（Windows）
-├─ concepts/
-│ └─ route-a-minimum-loop.md
-└─ diagrams/
-├─ index.md
-└─ route-a-mindmap.svg
-
-
----
-
-## 如何使用这个首页？
-
-* **读者**：当作“地图”，而不是章节目录  
-* **教学者**：作为课程 / 工作坊入口页  
-* **作者自己**：判断“新内容应该挂在哪”
-
----
-
-## 本页结论
-
-> **这套文档不是让你“全部读完”，  
-> 而是让你“在正确的位置开始，并在合适的位置停下”。**
+如果系统说 OK，那就是完成。
+如果系统说 Fail，那就是下一步。
 
